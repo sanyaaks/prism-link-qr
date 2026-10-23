@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+  body {
+    @apply bg-midnight-950 font-sans text-signal antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    min-height: 100vh;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: rgba(0, 209, 178, 0.3);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid #00d1b2;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.025];
+  }
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.22em] text-white/50;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn bg-pulse text-midnight-950 hover:bg-pulse-soft active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn border border-white/15 text-white/80 hover:border-white/30 hover:bg-white/5 hover:text-white;
+  }
+  .btn-quiet {
+    @apply btn px-3 text-white/60 hover:bg-white/5 hover:text-white;
+  }
+  .mono {
+    @apply font-mono text-[13px] leading-relaxed;
+  }
+  .grid-backdrop {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+  }
+}
